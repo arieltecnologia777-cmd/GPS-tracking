@@ -172,8 +172,52 @@ button{
 
 <script>
 
-    let watchId = null;
+let watchId = null;
 let totalPuntos = 0;
+let historialGPS = [];
+let kilometros = 0;
+
+function distanciaMetros(
+    lat1,
+    lon1,
+    lat2,
+    lon2
+){
+
+    const R = 6371000;
+
+    const dLat =
+    (lat2 - lat1) *
+    Math.PI / 180;
+
+    const dLon =
+    (lon2 - lon1) *
+    Math.PI / 180;
+
+    const a =
+
+        Math.sin(dLat / 2) *
+        Math.sin(dLat / 2) +
+
+        Math.cos(lat1 * Math.PI / 180) *
+
+        Math.cos(lat2 * Math.PI / 180) *
+
+        Math.sin(dLon / 2) *
+
+        Math.sin(dLon / 2);
+
+    const c =
+        2 *
+        Math.atan2(
+            Math.sqrt(a),
+            Math.sqrt(1 - a)
+        );
+
+    return R * c;
+
+}
+
 const tecnico =
 localStorage.getItem("tecnico") || "Técnico";
 
@@ -198,6 +242,16 @@ document
     .toLocaleTimeString();
 
     totalPuntos = 0;
+    historialGPS = [];
+    kilometros = 0;
+
+    document
+    .getElementById("puntos")
+    .textContent = 0;
+
+    document
+    .getElementById("kms")
+    .textContent = "0.00";
 
     watchId =
     navigator.geolocation.watchPosition(
@@ -205,6 +259,44 @@ document
         function(pos){
 
             totalPuntos++;
+
+            historialGPS.push({
+
+                lat: pos.coords.latitude,
+
+                lon: pos.coords.longitude,
+
+                fecha: new Date()
+
+            });
+
+            if(
+                historialGPS.length > 1
+            ){
+
+                const anterior =
+                historialGPS[
+                    historialGPS.length - 2
+                ];
+
+                kilometros +=
+                distanciaMetros(
+
+                    anterior.lat,
+                    anterior.lon,
+
+                    pos.coords.latitude,
+                    pos.coords.longitude
+
+                );
+
+                document
+                .getElementById("kms")
+                .textContent =
+                (kilometros / 1000)
+                .toFixed(2);
+
+            }
 
             document
             .getElementById("puntos")
@@ -224,13 +316,19 @@ document
             document
             .getElementById("precision")
             .textContent =
-            Math.round(pos.coords.accuracy) + " m";
+            Math.round(
+                pos.coords.accuracy
+            ) + " m";
 
         },
 
         function(error){
 
             console.error(error);
+
+            alert(
+                "No fue posible obtener la ubicación GPS"
+            );
 
         },
 
@@ -243,7 +341,7 @@ document
 
 });
 
-    document
+document
 .getElementById("btnFinalizar")
 .addEventListener("click", () => {
 
@@ -263,6 +361,7 @@ document
     "🔴 GPS Inactivo";
 
 });
+
 </script>
 
 </body>
