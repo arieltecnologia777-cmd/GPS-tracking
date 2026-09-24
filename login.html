@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dominic Tracking</title>
+
+    <style>
+
+        body{
+            margin:0;
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            font-family:Arial, sans-serif;
+
+            background:
+                radial-gradient(circle at top left,#2f3fff,#080b25 45%),
+                radial-gradient(circle at bottom right,#00d4ff,#080b25 40%);
+        }
+
+        .login-card{
+            width:380px;
+            padding:30px;
+
+            background:rgba(255,255,255,.08);
+            backdrop-filter:blur(20px);
+
+            border:1px solid rgba(255,255,255,.15);
+            border-radius:20px;
+
+            color:white;
+        }
+
+        h1{
+            margin-top:0;
+            text-align:center;
+        }
+
+        p{
+            text-align:center;
+            opacity:.8;
+        }
+
+        input{
+            width:100%;
+            padding:12px;
+            margin-top:12px;
+
+            border:none;
+            border-radius:12px;
+
+            box-sizing:border-box;
+        }
+
+        button{
+            width:100%;
+            margin-top:18px;
+            padding:12px;
+
+            border:none;
+            border-radius:12px;
+
+            background:#136BFF;
+            color:white;
+
+            cursor:pointer;
+            font-weight:bold;
+        }
+
+        button:hover{
+            opacity:.9;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="login-card">
+
+        <h1>Dominic Tracking</h1>
+
+        <p>
+            Plataforma GPS para técnicos de campo
+        </p>
+
+        <input
+            type="text"
+            placeholder="Usuario"
+        >
+
+        <input
+            type="password"
+            placeholder="Contraseña"
+        >
+
+        <button>
+            Ingresar
+        </button>
+
+    </div>
+
+</body>
+</html>
