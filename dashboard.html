@@ -147,18 +147,6 @@ button{
         <strong id="latitud">--</strong>
     </div>
 
-    <div class="kpi">
-        <span>Longitud</span>
-        <strong id="longitud">--</strong>
-    </div>
-
-    <div class="kpi">
-        <span>Precisión</span>
-        <strong id="precision">--</strong>
-    </div>
-
-</div>
-
 <div class="kpi">
     <span>Longitud</span>
     <strong id="longitud">--</strong>
@@ -271,10 +259,6 @@ jornadaActiva = true;
     kilometros = 0;
 
     document
-    .getElementById("puntos")
-    .textContent = 0;
-
-    document
     .getElementById("kms")
     .textContent = "0.00";
 
@@ -321,11 +305,6 @@ jornadaActiva = true;
                 .toFixed(2);
 
             }
-
-            document
-            .getElementById("puntos")
-            .textContent =
-            totalPuntos;
 
             document
             .getElementById("latitud")
