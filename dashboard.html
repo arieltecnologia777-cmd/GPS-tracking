@@ -226,6 +226,13 @@ document
 .getElementById("btnIniciar")
 .addEventListener("click", () => {
 
+    if(!navigator.geolocation){
+    alert(
+        "Este dispositivo no soporta GPS"
+    );
+    return;
+}
+
     document
     .getElementById("estadoGps")
     .innerHTML =
