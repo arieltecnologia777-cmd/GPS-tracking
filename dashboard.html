@@ -177,6 +177,7 @@ let watchId = null;
 let totalPuntos = 0;
 let historialGPS = [];
 let kilometros = 0;
+let jornadaActiva = false;
 
 function distanciaMetros(
     lat1,
@@ -230,6 +231,12 @@ document
 document
 .getElementById("btnIniciar")
 .addEventListener("click", () => {
+
+    if(jornadaActiva){
+    return;
+}
+
+jornadaActiva = true;
 
     document
     .getElementById("estadoGps")
@@ -352,6 +359,7 @@ document
         .clearWatch(watchId);
 
         watchId = null;
+        jornadaActiva = false;
 
     }
 
