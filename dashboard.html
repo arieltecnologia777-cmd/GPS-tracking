@@ -172,6 +172,8 @@ button{
 
 <script>
 
+    let watchId = null;
+let totalPuntos = 0;
 const tecnico =
 localStorage.getItem("tecnico") || "Técnico";
 
@@ -195,9 +197,19 @@ document
     new Date()
     .toLocaleTimeString();
 
-    navigator.geolocation.getCurrentPosition(
+    totalPuntos = 0;
+
+    watchId =
+    navigator.geolocation.watchPosition(
 
         function(pos){
+
+            totalPuntos++;
+
+            document
+            .getElementById("puntos")
+            .textContent =
+            totalPuntos;
 
             document
             .getElementById("latitud")
@@ -218,25 +230,32 @@ document
 
         function(error){
 
-            alert(
-                "No fue posible obtener la ubicación GPS"
-            );
-
             console.error(error);
 
         },
 
         {
-            enableHighAccuracy:true
+            enableHighAccuracy:true,
+            maximumAge:0
         }
 
     );
 
 });
 
-document
+    document
 .getElementById("btnFinalizar")
 .addEventListener("click", () => {
+
+    if(watchId){
+
+        navigator
+        .geolocation
+        .clearWatch(watchId);
+
+        watchId = null;
+
+    }
 
     document
     .getElementById("estadoGps")
