@@ -153,17 +153,6 @@ button{
 </div>
 
 </div>
-    <div class="card">
-
-    <h3>Ruta capturada</h3>
-
-    <div id="rutaGps">
-
-        No hay puntos registrados.
-
-    </div>
-
-</div>
 
 
 <div class="botones">
@@ -281,34 +270,6 @@ document
                 fecha: new Date()
 
             });
-document
-.getElementById("rutaGps")
-.innerHTML =
-
-historialGPS
-
-.slice(-10)
-
-.reverse()
-
-.map((punto,index) =>
-
-    `
-    <div style="
-        padding:8px;
-        border-bottom:1px solid #eee;
-        font-size:12px;
-    ">
-        ${historialGPS.length - index}
-        |
-        ${punto.lat.toFixed(6)}
-        |
-        ${punto.lon.toFixed(6)}
-    </div>
-    `
-)
-
-.join("");
             if(
                 historialGPS.length > 1
             ){
