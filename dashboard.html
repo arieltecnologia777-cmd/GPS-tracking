@@ -137,6 +137,21 @@ button{
         <strong id="puntos">0</strong>
     </div>
 
+    <div class="kpi">
+    <span>Latitud</span>
+    <strong id="latitud">--</strong>
+</div>
+
+<div class="kpi">
+    <span>Longitud</span>
+    <strong id="longitud">--</strong>
+</div>
+
+<div class="kpi">
+    <span>Precisión</span>
+    <strong id="precision">--</strong>
+</div>
+
 </div>
 
 <div class="botones">
@@ -180,6 +195,43 @@ document
     new Date()
     .toLocaleTimeString();
 
+    navigator.geolocation.getCurrentPosition(
+
+        function(pos){
+
+            document
+            .getElementById("latitud")
+            .textContent =
+            pos.coords.latitude.toFixed(6);
+
+            document
+            .getElementById("longitud")
+            .textContent =
+            pos.coords.longitude.toFixed(6);
+
+            document
+            .getElementById("precision")
+            .textContent =
+            Math.round(pos.coords.accuracy) + " m";
+
+        },
+
+        function(error){
+
+            alert(
+                "No fue posible obtener la ubicación GPS"
+            );
+
+            console.error(error);
+
+        },
+
+        {
+            enableHighAccuracy:true
+        }
+
+    );
+
 });
 
 document
@@ -192,7 +244,6 @@ document
     "🔴 GPS Inactivo";
 
 });
-
 </script>
 
 </body>
