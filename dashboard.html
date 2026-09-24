@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dominic Tracking</title>
+
+<style>
+
+:root{
+    --primary:#136BFF;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;
+}
+
+body{
+    background:#f5f7fa;
+    padding:20px;
+}
+
+.header{
+    background:#136BFF;
+    color:white;
+    border-radius:18px;
+    padding:20px;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.header img{
+    width:70px;
+    height:70px;
+    object-fit:contain;
+}
+
+.header h2{
+    margin-bottom:4px;
+}
+
+.card{
+    background:white;
+    border-radius:18px;
+    padding:20px;
+    margin-bottom:18px;
+    box-shadow:0 4px 20px rgba(0,0,0,.08);
+}
+
+.kpi{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:12px;
+}
+
+.kpi strong{
+    color:#136BFF;
+}
+
+.estado{
+    font-size:18px;
+    font-weight:700;
+    color:#ff4d4d;
+}
+
+.botones{
+    display:flex;
+    gap:10px;
+}
+
+button{
+    flex:1;
+    border:none;
+    border-radius:12px;
+    padding:14px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.btnInicio{
+    background:#136BFF;
+    color:white;
+}
+
+.btnFin{
+    background:#e9eef7;
+}
+
+</style>
+</head>
+<body>
+
+<div class="header">
+
+    assistant_casco.png
+
+    <div>
+        <h2 id="saludo">
+            Hola Técnico
+        </h2>
+
+        <div>
+            Seguimiento operativo GPS
+        </div>
+    </div>
+
+</div>
+
+<div class="card">
+
+    <div class="estado" id="estadoGps">
+        🔴 GPS Inactivo
+    </div>
+
+</div>
+
+<div class="card">
+
+    <div class="kpi">
+        <span>Hora inicio</span>
+        <strong id="horaInicio">--</strong>
+    </div>
+
+    <div class="kpi">
+        <span>Kilómetros</span>
+        <strong id="kms">0</strong>
+    </div>
+
+    <div class="kpi">
+        <span>Puntos GPS</span>
+        <strong id="puntos">0</strong>
+    </div>
+
+</div>
+
+<div class="botones">
+
+    <button
+        class="btnInicio"
+        id="btnIniciar">
+        ▶ Iniciar jornada
+    </button>
+
+    <button
+        class="btnFin"
+        id="btnFinalizar">
+        ■ Finalizar jornada
+    </button>
+
+</div>
+
+<script>
+
+const tecnico =
+localStorage.getItem("tecnico") || "Técnico";
+
+document
+.getElementById("saludo")
+.textContent =
+"Hola " + tecnico;
+
+document
+.getElementById("btnIniciar")
+.addEventListener("click", () => {
+
+    document
+    .getElementById("estadoGps")
+    .innerHTML =
+    "🟢 GPS Activo";
+
+    document
+    .getElementById("horaInicio")
+    .textContent =
+    new Date()
+    .toLocaleTimeString();
+
+});
+
+document
+.getElementById("btnFinalizar")
+.addEventListener("click", () => {
+
+    document
+    .getElementById("estadoGps")
+    .innerHTML =
+    "🔴 GPS Inactivo";
+
+});
+
+</script>
+
+</body>
+</html>
