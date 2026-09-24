@@ -1,106 +1,218 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dominic Tracking</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
+<title>Dominic Tracking</title>
 
-        body{
-            margin:0;
-            height:100vh;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            font-family:Arial, sans-serif;
+<style>
 
-            background:
-                radial-gradient(circle at top left,#2f3fff,#080b25 45%),
-                radial-gradient(circle at bottom right,#00d4ff,#080b25 40%);
-        }
+:root{
+    --primary:#136BFF;
+}
 
-        .login-card{
-            width:380px;
-            padding:30px;
+*{
+    box-sizing:border-box;
+}
 
-            background:rgba(255,255,255,.08);
-            backdrop-filter:blur(20px);
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:Roboto,Arial,sans-serif;
 
-            border:1px solid rgba(255,255,255,.15);
-            border-radius:20px;
+    background:
+    linear-gradient(
+        135deg,
+        #e9f2ff,
+        #f7f9ff
+    );
+}
 
-            color:white;
-        }
+.login-card{
 
-        h1{
-            margin-top:0;
-            text-align:center;
-        }
+    width:390px;
 
-        p{
-            text-align:center;
-            opacity:.8;
-        }
+    background:#fff;
 
-        input{
-            width:100%;
-            padding:12px;
-            margin-top:12px;
+    border-radius:20px;
 
-            border:none;
-            border-radius:12px;
+    padding:30px;
 
-            box-sizing:border-box;
-        }
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.12);
 
-        button{
-            width:100%;
-            margin-top:18px;
-            padding:12px;
+    text-align:center;
 
-            border:none;
-            border-radius:12px;
+}
 
-            background:#136BFF;
-            color:white;
+.assistant{
 
-            cursor:pointer;
-            font-weight:bold;
-        }
+    display:flex;
+    align-items:center;
+    gap:12px;
 
-        button:hover{
-            opacity:.9;
-        }
+    background:var(--primary);
 
-    </style>
+    border-radius:16px;
 
+    padding:14px;
+
+    color:white;
+
+    text-align:left;
+
+    margin-bottom:25px;
+
+}
+
+.assistant img{
+
+    width:60px;
+    height:60px;
+    border-radius:50%;
+
+    object-fit:cover;
+
+    background:white;
+
+}
+
+.assistant-title{
+
+    font-size:22px;
+    font-weight:700;
+
+}
+
+.assistant-sub{
+
+    font-size:13px;
+    opacity:.9;
+
+}
+
+.version{
+
+    font-size:12px;
+    margin-top:4px;
+    opacity:.9;
+
+}
+
+input{
+
+    width:100%;
+
+    padding:12px 14px;
+
+    border:1px solid #dfe5ef;
+
+    border-radius:12px;
+
+    margin-bottom:12px;
+
+    font-size:14px;
+
+}
+
+input:focus{
+
+    outline:none;
+
+    border-color:var(--primary);
+
+}
+
+button{
+
+    width:100%;
+
+    border:none;
+
+    padding:13px;
+
+    border-radius:12px;
+
+    background:var(--primary);
+
+    color:white;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+}
+
+button:hover{
+
+    filter:brightness(.95);
+
+}
+
+.logo{
+
+    margin-top:25px;
+
+}
+
+.logo img{
+
+    width:140px;
+
+}
+
+</style>
 </head>
+
 <body>
 
-    <div class="login-card">
+<div class="login-card">
 
-        <h1>Dominic Tracking</h1>
+    <div class="assistant">
 
-        <p>
-            Plataforma GPS para técnicos de campo
-        </p>
+        assistant_casco.png
 
-        <input
-            type="text"
-            placeholder="Usuario"
-        >
+        <div>
 
-        <input
-            type="password"
-            placeholder="Contraseña"
-        >
+            <div class="assistant-title">
+                ¡Hola, soy Dominic!
+            </div>
 
-        <button>
-            Ingresar
-        </button>
+            <div class="assistant-sub">
+                Gestiono tu rastreo GPS de manera inteligente
+            </div>
+
+            <div class="version">
+                Versión v1.0.0
+            </div>
+
+        </div>
 
     </div>
+
+    <input
+        id="usuario"
+        type="text"
+        placeholder="Usuario">
+
+    <input
+        id="password"
+        type="password"
+        placeholder="Contraseña">
+
+    <button id="btnLogin">
+        Ingresar
+    </button>
+
+    <div class="logo">
+        dominion_logo.png
+    </div>
+
+</div>
 
 </body>
 </html>
