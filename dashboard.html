@@ -183,6 +183,7 @@ let totalPuntos = 0;
 let historialGPS = [];
 let kilometros = 0;
 let jornadaActiva = false;
+    let inicioJornada = null;
 
 function distanciaMetros(
     lat1,
@@ -242,6 +243,7 @@ document
 }
 
 jornadaActiva = true;
+    inicioJornada = new Date();
 
     document
     .getElementById("estadoGps")
@@ -356,6 +358,25 @@ document
 
         watchId = null;
         jornadaActiva = false;
+        const finJornada = new Date();
+
+document
+.getElementById("horaFin")
+.textContent =
+finJornada.toLocaleTimeString();
+
+if(inicioJornada){
+
+    const minutos = Math.floor(
+        (finJornada - inicioJornada) / 60000
+    );
+
+    document
+    .getElementById("duracion")
+    .textContent =
+    minutos + " min";
+
+}
 
     }
 
