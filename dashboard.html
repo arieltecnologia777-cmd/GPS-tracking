@@ -325,6 +325,46 @@ jornadaActiva = true;
                 pos.coords.accuracy
             ) + " m";
 
+            fetch(
+    "https://gps-tracking-api.modulo-de-exclusiones.workers.dev/",
+    {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+
+            tecnico: tecnico,
+
+            lat: pos.coords.latitude,
+
+            lon: pos.coords.longitude,
+
+            precision: pos.coords.accuracy,
+
+            kilometros: kilometros
+
+        })
+    }
+)
+.then(r => r.json())
+.then(data => {
+
+    console.log(
+        "GPS guardado",
+        data
+    );
+
+})
+.catch(err => {
+
+    console.error(
+        "Error guardando GPS",
+        err
+    );
+
+});
+
         },
 
         function(error){
