@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Supervisor GPS</title>
+
+<style>
+
+body{
+    font-family:Segoe UI,sans-serif;
+    background:#f5f7fa;
+    padding:20px;
+}
+
+.header{
+    background:#136BFF;
+    color:white;
+    padding:20px;
+    border-radius:16px;
+    margin-bottom:20px;
+}
+
+.card{
+    background:white;
+    border-radius:16px;
+    padding:20px;
+    box-shadow:0 4px 20px rgba(0,0,0,.08);
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th, td{
+    padding:12px;
+    border-bottom:1px solid #eee;
+    text-align:left;
+}
+
+th{
+    background:#f7f9fc;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+    <h2>Supervisor GPS</h2>
+
+    <div>Seguimiento de técnicos</div>
+
+</div>
+
+<div class="card">
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>ID</th>
+                <th>Técnico</th>
+                <th>Km</th>
+                <th>Fecha</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="tablaGps">
+
+            <tr>
+                <td colspan="4">
+                    Cargando...
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<script>
+
+fetch(
+  "https://gps-tracking-api.modulo-de-exclusiones.workers.dev/"
+)
+.then(r => r.json())
+.then(data => {
+
+    document
+    .getElementById("tablaGps")
+    .innerHTML =
+
+    data.map(item => `
+
+        <tr>
+
+            <td>${item.id}</td>
+
+            <td>${item.tecnico}</td>
+
+            <td>${Number(item.kilometros).toFixed(2)}</td>
+
+            <td>${item.fecha}</td>
+
+        </tr>
+
+    `).join("");
+
+});
+
+</script>
+
+</body>
+</html>
