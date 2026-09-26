@@ -97,9 +97,18 @@ document
 
     ]);
 
-    puntos.forEach(punto => {
+   puntos.forEach(punto => {
 
-    L.marker(punto)
+    L.circleMarker(
+        punto,
+        {
+            radius: 4,
+            color: "#0b5fff",
+            fillColor: "#5ec8ff",
+            fillOpacity: 1,
+            weight: 1
+        }
+    )
     .addTo(map);
 
 });
