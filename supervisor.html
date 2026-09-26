@@ -70,6 +70,7 @@ th{
                 <th>Técnico</th>
                 <th>Km</th>
                 <th>Fecha</th>
+                <th>Ruta</th>
 
             </tr>
 
@@ -120,17 +121,35 @@ fetch(
 
     lista.map(item => `
 
-        <tr>
+       <tr>
 
-            <td>${item.id}</td>
+    <td>${item.id}</td>
 
-            <td>${item.tecnico}</td>
+    <td>${item.tecnico}</td>
 
-            <td>${Number(item.kilometros).toFixed(2)}</td>
+    <td>${Number(item.kilometros).toFixed(2)}</td>
 
-            <td>${item.fecha}</td>
+    <td>${item.fecha}</td>
 
-        </tr>
+    <td>
+
+        <a
+href="ruta.html?tecnico=${encodeURIComponent(item.tecnico)}"
+target="_blank"
+style="
+background:#136BFF;
+color:white;
+padding:8px 12px;
+border-radius:8px;
+text-decoration:none;
+"
+>
+Ver ruta
+</a>
+
+    </td>
+
+</tr>
 
     `)
 
