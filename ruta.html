@@ -63,6 +63,18 @@ L.tileLayer(
     }
 ).addTo(map);
 
+    const params =
+new URLSearchParams(
+    window.location.search
+);
+
+const tecnico =
+params.get("tecnico");
+
+document
+.getElementById("titulo")
+.textContent =
+"Ruta de " + tecnico;
 </script>
 
 </body>
