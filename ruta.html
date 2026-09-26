@@ -97,19 +97,30 @@ document
 
     ]);
 
-   puntos.forEach(punto => {
+   const puntoAzul = L.divIcon({
+    className: "",
+    html: `
+        <div style="
+            width:10px;
+            height:10px;
+            border-radius:50%;
+            background:#53b8ff;
+            border:2px solid #0b60ff;
+            box-shadow:0 0 4px rgba(0,0,0,.4);
+        "></div>
+    `,
+    iconSize:[10,10],
+    iconAnchor:[5,5]
+});
 
-    L.circleMarker(
+puntos.forEach(punto => {
+
+    L.marker(
         punto,
         {
-            radius: 4,
-            color: "#0b5fff",
-            fillColor: "#5ec8ff",
-            fillOpacity: 1,
-            weight: 1
+            icon:puntoAzul
         }
-    )
-    .addTo(map);
+    ).addTo(map);
 
 });
 
