@@ -75,6 +75,18 @@ document
 .getElementById("titulo")
 .textContent =
 "Ruta de " + tecnico;
+
+    fetch(
+    "https://gps-tracking-api.modulo-de-exclusiones.workers.dev/?tecnico="
+    +
+    encodeURIComponent(tecnico)
+)
+.then(r => r.json())
+.then(data => {
+
+    console.log(data);
+
+});
 </script>
 
 </body>
