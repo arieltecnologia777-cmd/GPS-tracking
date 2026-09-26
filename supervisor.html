@@ -126,11 +126,7 @@ fetch(
 
             <td>${item.tecnico}</td>
 
-            <td>
-                ${Number(
-                    item.kilometros
-                ).toFixed(2)}
-            </td>
+            <td>${Number(item.kilometros).toFixed(2)}</td>
 
             <td>${item.fecha}</td>
 
@@ -139,22 +135,6 @@ fetch(
     `)
 
     .join("");
-
-});
-
-        <tr>
-
-            <td>${item.id}</td>
-
-            <td>${item.tecnico}</td>
-
-            <td>${Number(item.kilometros).toFixed(2)}</td>
-
-            <td>${item.fecha}</td>
-
-        </tr>
-
-    `).join("");
 
 });
 
