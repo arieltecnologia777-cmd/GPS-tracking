@@ -99,12 +99,21 @@ document
 
     puntos.forEach(punto => {
 
-        L.marker(punto)
-        .addTo(map);
+    L.marker(punto)
+    .addTo(map);
 
-    });
+});
 
-    map.fitBounds(puntos);
+L.polyline(
+    puntos,
+    {
+        color: "#136BFF",
+        weight: 5,
+        opacity: 0.8
+    }
+).addTo(map);
+
+map.fitBounds(puntos);
 
 });
 </script>
