@@ -113,7 +113,32 @@ document
     iconAnchor:[5,5]
 });
 
-puntos.forEach(punto => {
+// Punto inicial
+L.circleMarker(
+    puntos[0],
+    {
+        radius:8,
+        color:"green",
+        fillColor:"green",
+        fillOpacity:1,
+        weight:2
+    }
+).addTo(map);
+
+// Punto final
+L.circleMarker(
+    puntos[puntos.length - 1],
+    {
+        radius:8,
+        color:"orange",
+        fillColor:"orange",
+        fillOpacity:1,
+        weight:2
+    }
+).addTo(map);
+
+// Puntos intermedios
+puntos.slice(1,-1).forEach(punto => {
 
     L.marker(
         punto,
