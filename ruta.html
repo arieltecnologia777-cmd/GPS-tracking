@@ -113,31 +113,49 @@ document
     iconAnchor:[5,5]
 });
 
-// Punto inicial
+// INICIO (verde claro)
+
 L.circleMarker(
     puntos[0],
     {
         radius:8,
-        color:"green",
-        fillColor:"green",
+        color:"#2bb673",
+        fillColor:"#8ef0c0",
         fillOpacity:1,
         weight:2
     }
 ).addTo(map);
 
-// Punto final
-L.circleMarker(
+
+// MOTO (última ubicación)
+
+const motoIcon = L.divIcon({
+
+    className:"",
+
+    html:`
+        <div style="
+            font-size:24px;
+        ">
+            🏍️
+        </div>
+    `,
+
+    iconSize:[24,24],
+    iconAnchor:[12,12]
+
+});
+
+L.marker(
     puntos[puntos.length - 1],
     {
-        radius:8,
-        color:"orange",
-        fillColor:"orange",
-        fillOpacity:1,
-        weight:2
+        icon:motoIcon
     }
 ).addTo(map);
 
-// Puntos intermedios
+
+// RECORRIDO (azul)
+
 puntos.slice(1,-1).forEach(punto => {
 
     L.marker(
