@@ -97,11 +97,50 @@ fetch(
 .then(r => r.json())
 .then(data => {
 
+    const tecnicos = {};
+
+    data.forEach(item => {
+
+        if(
+            !tecnicos[item.tecnico]
+        ){
+
+            tecnicos[item.tecnico] = item;
+
+        }
+
+    });
+
+    const lista =
+    Object.values(tecnicos);
+
     document
     .getElementById("tablaGps")
     .innerHTML =
 
-    data.map(item => `
+    lista.map(item => `
+
+        <tr>
+
+            <td>${item.id}</td>
+
+            <td>${item.tecnico}</td>
+
+            <td>
+                ${Number(
+                    item.kilometros
+                ).toFixed(2)}
+            </td>
+
+            <td>${item.fecha}</td>
+
+        </tr>
+
+    `)
+
+    .join("");
+
+});
 
         <tr>
 
