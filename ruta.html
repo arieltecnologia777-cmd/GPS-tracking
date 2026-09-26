@@ -34,7 +34,33 @@ body{
     height:90vh;
     width:100%;
 }
+#infoRuta{
 
+    position:absolute;
+
+    top:90px;
+    right:15px;
+
+    z-index:999;
+
+    background:white;
+
+    border-radius:12px;
+
+    padding:15px;
+
+    min-width:220px;
+
+    box-shadow:
+    0 4px 20px rgba(0,0,0,.15);
+
+    font-size:14px;
+
+}
+
+#infoRuta div{
+    margin-bottom:8px;
+}
 </style>
 
 </head>
@@ -46,6 +72,15 @@ body{
     <h2 id="titulo">
         Ruta del técnico
     </h2>
+
+</div>
+    <div id="infoRuta">
+
+    <div><strong>Técnico:</strong> <span id="infoTecnico">-</span></div>
+
+    <div><strong>Puntos:</strong> <span id="infoPuntos">0</span></div>
+
+    <div><strong>Km:</strong> <span id="infoKm">0</span></div>
 
 </div>
 
@@ -89,7 +124,26 @@ document
     if(data.length === 0){
         return;
     }
+document
+.getElementById("infoTecnico")
+.textContent =
+tecnico;
 
+document
+.getElementById("infoPuntos")
+.textContent =
+data.length;
+
+const kmMax = Math.max(
+    ...data.map(
+        p => Number(p.kilometros || 0)
+    )
+);
+
+document
+.getElementById("infoKm")
+.textContent =
+kmMax.toFixed(2);
     const puntos = data.map(p => [
 
         p.lat,
