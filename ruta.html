@@ -118,7 +118,7 @@ document
 L.circleMarker(
     puntos[0],
     {
-        radius:8,
+        radius:6,
         color:"#2bb673",
         fillColor:"#8ef0c0",
         fillOpacity:1,
@@ -149,23 +149,30 @@ const motoIcon = L.divIcon({
 L.marker(
     puntos[puntos.length - 1],
     {
-        icon:motoIcon
+        icon:motoIcon,
+        zIndexOffset: 1000
     }
 ).addTo(map);
 
 
 // RECORRIDO (azul)
 
-puntos.slice(1,-1).forEach(punto => {
+if(puntos.length > 2){
 
-    L.marker(
-        punto,
-        {
-            icon:puntoAzul
-        }
-    ).addTo(map);
+    puntos.slice(1, puntos.length - 1)
 
-});
+    .forEach(punto => {
+
+        L.marker(
+            punto,
+            {
+                icon:puntoAzul
+            }
+        ).addTo(map);
+
+    });
+
+}
 
 L.polyline(
     puntos,
